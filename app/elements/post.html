@@ -1,12 +1,26 @@
-<polymer-element name="post-element"  attributes="">
+<polymer-element name="post-element"  attributes="post">
   <template>
     <style>
       @host { :scope {display: block;} }
     </style>
-    <span>I'm <b>post-element</b>. This is my Shadow DOM.</span>
+      <div class="col-lg-4">
+          <h2>{{post.title}}</h2>
+          <p>By {{post.author.name}} {{formatedCreatedDate}} </p>
+          <p>{{post.content}}</p>
+          <p><a class="btn btn-default" href="/post/{{post.id}}">Read more &raquo;</a></p>
+        </div>
   </template>
   <script>
     Polymer('post-element', {
+/*
+      post: {
+        title: 'test',
+        author: {
+          name: 'Addy'
+        },
+        formatedCreatedDate: '010101',
+        content: 'This is my amazing blog post awwww yeah.'
+      },*/
       //applyAuthorStyles: true,
       //resetStyleInheritance: true,
       ready: function() { },

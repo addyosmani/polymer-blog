@@ -1,12 +1,34 @@
+<link rel="import" href="post.html">
+<link rel="import" href="facebook-button/src/facebook-button.html">
+<link rel="import" href="polymer-jsonp/polymer-jsonp.html">
+
 <polymer-element name="blog-element"  attributes="">
   <template>
     <style>
       @host { :scope {display: block;} }
     </style>
-    <span>I'm <b>blog-element</b>. This is my Shadow DOM.</span>
+    <div class="row">
+      <p><facebook-button></facebook-button></p>
+
+      <h1>A test blog</h1>
+
+      <template id="t1" repeat="{{post in posts}}">
+        <post-element post="{{post}}"></post-element>
+      </template>
+
+    </div>
+    <polymer-jsonp auto url="elements/posts.json?callback=_polymer_jsonp_callback_" response="{{posts}}"></polymer-jsonp>
   </template>
+
   <script>
+    function _polymer_jsonp_callback_(data){
+      var t = document.getElementById('t1');
+      t.model = data;
+    }
+
     Polymer('blog-element', {
+
+      //blog: content,
       //applyAuthorStyles: true,
       //resetStyleInheritance: true,
       ready: function() { },
