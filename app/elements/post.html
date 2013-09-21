@@ -7,7 +7,9 @@
           <h2>{{post.gsx$title.$t}}</h2>
           <p>By {{post.gsx$author.$t}} {{post.gsx$publishedDate.$t}} </p>
           <p>{{post.gsx$content.$t}}</p>
-          <p><a class="btn btn-default" href="/post/{{post.id}}">Read more &raquo;</a></p>
+          <p>{{post.gsx$date.$t}}</p>
+          <small>Keywords: {{post.gsx$keywords.$t}}</small>
+          <p><a class="btn btn-default" href="/post/{{post.gsx$id.$t}}">Read more &raquo;</a></p>
         </div>
   </template>
   <script>
