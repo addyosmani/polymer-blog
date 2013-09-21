@@ -14,23 +14,28 @@
       <h1>A test blog</h1>
       <gravatar-element username="addyosmani@gmail.com" size="100" customurl="http://www.google.com"></gravatar-element>
 
-      <template id="postTemplate" repeat="{{post in posts}}">
+      <template id="postTemplate" repeat="{{post in posts.feed.entry}}">
         <post-element post="{{post}}"></post-element>
       </template>
 
     </div>
-    <polymer-jsonp auto url="elements/posts.json?callback=_polymer_jsonp_callback_" response="{{posts}}"></polymer-jsonp>
+    <!--
+    Notes: you *must* publish your spreadsheet to the web in order for this
+    to work and that spreadsheet must be also public in your share settings. A backup is provided in posts.json just in case you wish to use that instead.
+
+    One of the nice things about this is you can easily update your spreadsheet and this app should always pull in the latest version of your posts.
+  -->
+    <polymer-jsonp auto url="https://spreadsheets.google.com/feeds/list/0AhcraNy3sgspdHVQUGd2M2Q0MEZnRms3c3dDQWQ3V1E/od6/public/values?alt=json-in-script&callback=" response="{{posts}}"></polymer-jsonp>
   </template>
 
   <script>
     function _polymer_jsonp_callback_(data){
+      alert('aaaaaa');
       var t = document.getElementById('postTemplate');
       t.model = data;
     }
 
     Polymer('blog-element', {
-      //applyAuthorStyles: true,
-      //resetStyleInheritance: true,
       ready: function() { },
       enteredDocument: function() { },
       leftDocument: function() { },
