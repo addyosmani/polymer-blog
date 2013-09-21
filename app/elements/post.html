@@ -5,8 +5,8 @@
       @host { :scope {display: block;} }
     </style>
       <div class="col-lg-4">
-          <h2><a href="#{{post.gsx$slug.$t}}">{{post.gsx$title.$t}}</a></h2>
           <template if="{{ post.gsx$slug.$t === selected }}">
+            <h2><a href="#{{post.gsx$slug.$t}}">{{post.gsx$title.$t}}</a></h2>
             <p>By {{post.gsx$author.$t}} {{post.gsx$publishedDate.$t}}</p>
             {{post.gsx$gravatar.$t}}
             <gravatar-element username="{{post.gsx$email.$t}}" size="100"></gravatar-element>
