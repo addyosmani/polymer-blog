@@ -1,6 +1,8 @@
 <link rel="import" href="post.html">
-<link rel="import" href="facebook-button/src/facebook-button.html">
 <link rel="import" href="polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="flatiron-director/flatiron-director.html">
+
+<link rel="import" href="facebook-button/src/facebook-button.html">
 
 <polymer-element name="blog-element"  attributes="">
   <template>
@@ -8,12 +10,14 @@
       @host { :scope {display: block;} }
     </style>
     <div class="row">
+      <flatiron-director route="{{route}}" autoHash></flatiron-director>
       <p><facebook-button href="http://google.com"></facebook-button></p>
 
-      <h1>A test blog</h1>
+      <h1><a href="/#">A test blog</a></h1>
 
-      <template id="postTemplate" repeat="{{post in posts.feed.entry}}">
-        <post-element post="{{post}}"></post-element>
+      <h2>Table of contents</h2>
+      <template repeat="{{post in posts.feed.entry}}">
+        <post-element post="{{post}}" selected="{{route}}"></post-element>
       </template>
 
     </div>
@@ -28,7 +32,7 @@
 
   <script>
     Polymer('blog-element', {
-      created: function() { },
+      created: function() {},
       enteredView: function() { },
       leftView: function() { },
       attributeChanged: function(attrName, oldVal, newVal) { }

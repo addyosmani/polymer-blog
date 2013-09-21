@@ -1,18 +1,19 @@
 <link rel="import" href="gravatar-element/src/gravatar.html">
-<polymer-element name="post-element" attributes="post">
+<polymer-element name="post-element" attributes="post selected">
   <template>
     <style>
       @host { :scope {display: block;} }
     </style>
       <div class="col-lg-4">
-          <h2>{{post.gsx$title.$t}}</h2>
-          <p>By {{post.gsx$author.$t}} {{post.gsx$publishedDate.$t}}</p>
-          {{post.gsx$gravatar.$t}}
-          <gravatar-element username="{{post.gsx$email.$t}}" size="100"></gravatar-element>
-          <p>{{post.gsx$content.$t}}</p>
-          <p>{{post.gsx$date.$t}}</p>
-          <small>Keywords: {{post.gsx$keywords.$t}}</small>
-          <p><a class="btn btn-default" href="/post/{{post.gsx$id.$t}}">Read more &raquo;</a></p>
+          <h2><a href="#{{post.gsx$slug.$t}}">{{post.gsx$title.$t}}</a></h2>
+          <template if="{{ post.gsx$slug.$t === selected }}">
+            <p>By {{post.gsx$author.$t}} {{post.gsx$publishedDate.$t}}</p>
+            {{post.gsx$gravatar.$t}}
+            <gravatar-element username="{{post.gsx$email.$t}}" size="100"></gravatar-element>
+            <p>{{post.gsx$content.$t}}</p>
+            <p>{{post.gsx$date.$t}}</p>
+            <small>Keywords: {{post.gsx$keywords.$t}}</small>
+          </template>
         </div>
   </template>
   <script>

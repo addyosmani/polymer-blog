@@ -31,7 +31,6 @@
 		username: 'someemail@example.com',
 		size: 80,
 		created: function() {
-			console.log(this.username, this.$.username);
 			this.$.username.href = Gravatar.profileURL(this);
 			this.$.username_image.src = Gravatar.imageURL(this.username, this.size);
 		}
