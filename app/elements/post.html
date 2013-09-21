@@ -8,7 +8,6 @@
           <template if="{{ post.gsx$slug.$t === selected }}">
             <h2><a href="#{{post.gsx$slug.$t}}">{{post.gsx$title.$t}}</a></h2>
             <p>By {{post.gsx$author.$t}} {{post.gsx$publishedDate.$t}}</p>
-            {{post.gsx$gravatar.$t}}
             <gravatar-element username="{{post.gsx$email.$t}}" size="100"></gravatar-element>
             <p>{{post.gsx$content.$t}}</p>
             <p>{{post.gsx$date.$t}}</p>
@@ -17,6 +16,7 @@
         </div>
   </template>
   <script>
+
     Polymer('post-element', {
       created: function() { },
       enteredView: function() { },
