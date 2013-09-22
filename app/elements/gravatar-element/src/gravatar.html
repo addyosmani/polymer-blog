@@ -31,8 +31,12 @@
 		username: 'someemail@example.com',
 		size: 80,
 		created: function() {
+			// Work around timing issue with custom elements
+			setTimeout(function(){
 			this.$.username.href = Gravatar.profileURL(this);
 			this.$.username_image.src = Gravatar.imageURL(this.username, this.size);
+			}.bind(this), 0);
+
 		}
 	});
   </script>
