@@ -1,7 +1,6 @@
 <link rel="import" href="post.html">
 <link rel="import" href="polymer-jsonp/polymer-jsonp.html">
 <link rel="import" href="flatiron-director/flatiron-director.html">
-
 <link rel="import" href="facebook-button/src/facebook-button.html">
 
 <polymer-element name="blog-element"  attributes="">
@@ -15,7 +14,16 @@
 
       <h1><a href="/#">A test blog</a></h1>
 
-      <h2>Table of contents</h2>
+      <h2>Posts</h2>
+
+      <!-- Table of contents -->
+      <ul>
+        <template repeat="{{post in posts.feed.entry}}">
+          <li><a href="#{{post.gsx$slug.$t}}">{{post.gsx$title.$t}}</a></li>
+        </template>
+      </ul>
+
+      <!-- Post content -->
       <template repeat="{{post in posts.feed.entry}}">
         <post-element post="{{post}}" selected="{{route}}"></post-element>
       </template>
